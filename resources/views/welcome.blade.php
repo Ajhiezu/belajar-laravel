@@ -24,6 +24,7 @@
             <thead class="bg-gray-200">
                 <tr class="text-left">
                     <th class="p-3">Kode</th>
+                    <th class="p-3">Gambar</th>
                     <th class="p-3">Nama Barang</th>
                     <th class="p-3">Stok</th>
                     <th class="p-3">Harga Beli</th>
@@ -34,6 +35,12 @@
             <tbody>
                 @foreach ($barangs as $barang)
                     <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3">@if ($barang->gambar)
+                            <img src="{{ asset('uploads/barang/' . $barang->gambar) }}" alt="Gambar" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                        @else
+                            <span class="text-muted">-</span>
+                        @endif
+                        </td>
                         <td class="p-3">{{ $barang->kode_barang }}</td>
                         <td class="p-3">{{ $barang['nama_barang'] }}</td>
                         <td class="p-3">{{ $barang->stok }}</td>
